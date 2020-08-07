@@ -8,11 +8,11 @@ router.get("/", async (req, res) => {
     // const pizza = await Connection.db.collection("pizzas").find().toArray();
     // console.log(pizza);
 
-    res.send("main messages page");
+    res.render("index", { title: "Mongo Message" });
 });
 
 router.get("/new-message", (req, res) => {
-    res.render("form", { title: "New Message" });
+    res.render("new-message", { title: "New Message" });
 });
 
 router.post("/new-message", async (req, res) => {
