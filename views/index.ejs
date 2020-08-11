@@ -1,1 +1,14 @@
-<h1>Main Messages Page</h1>
+<div class="wrapper">
+    <h1 class="title"><%= title %></h1>
+    <section class="messages">
+      <ul class="messages__list">
+        <% for (let message of messages) { %>
+          <li class="messages__list__item">
+            <h3 class="messages__list__item__author"><%= message.name %></h3>  
+            <p class="messages__list__item__para"><%= message.message %></p>
+            <p class="messages__list__item__date"><%= message.createdAt %></p>
+          </li>
+        <% } %>
+      </ul>
+    </section>
+  </div>
