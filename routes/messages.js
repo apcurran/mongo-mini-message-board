@@ -6,9 +6,14 @@ const { Connection } = require("../db/db-init");
 const sanitize = require("sanitize")();
 
 router.get("/", async (req, res) => {
-    const messages = await Connection.db.collection("messages").find().toArray();
+    try {
+        const messages = await Connection.db.collection("messages").find().toArray();
+        
+        res.render("index", { title: "Mongo Message", messages: messages });
 
-    res.render("index", { title: "Mongo Message", messages: messages });
+    } catch (err) {
+        console.error(err);
+    }
 });
 
 router.get("/new-message", (req, res) => {
