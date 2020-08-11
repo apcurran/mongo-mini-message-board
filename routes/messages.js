@@ -28,9 +28,14 @@ router.post("/new-message", async (req, res) => {
         createdAt: formattedDate
     };
 
-    await Connection.db.collection("messages").insertOne(newMessage);
+    try {
+        await Connection.db.collection("messages").insertOne(newMessage);
+        
+        res.redirect("/");
 
-    res.redirect("/");
+    } catch (err) {
+        console.error(err);
+    }
 });
 
 module.exports = router;
