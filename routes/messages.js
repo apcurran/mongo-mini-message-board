@@ -3,6 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const { Connection } = require("../db/db-init");
+const sanitize = require("sanitize")();
 
 router.get("/", async (req, res) => {
     const messages = await Connection.db.collection("messages").find().toArray();
@@ -23,8 +24,8 @@ router.post("/new-message", async (req, res) => {
     const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
 
     const newMessage = {
-        name,
-        message,
+        name: sanitize.value(name, String),
+        message: sanitize.value(message, String),
         createdAt: formattedDate
     };
 

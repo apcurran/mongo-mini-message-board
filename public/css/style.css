@@ -28,6 +28,10 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
   }
   
+  .nav__link:first-of-type {
+    margin-right: 1.25rem;
+  }
+
   .wrapper {
     display: flex;
     flex-direction: column;
