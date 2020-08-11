@@ -7,7 +7,6 @@ const sanitize = require("sanitize")();
 
 router.get("/", async (req, res) => {
     const messages = await Connection.db.collection("messages").find().toArray();
-    console.log(messages);
 
     res.render("index", { title: "Mongo Message", messages: messages });
 });
