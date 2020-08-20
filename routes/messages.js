@@ -3,7 +3,8 @@
 const express = require("express");
 const router = express.Router();
 const { Connection } = require("../db/db-init");
-const sanitize = require("sanitize")();
+// const sanitize = require("sanitize")();
+const sanitizeHtml = require("sanitize-html");
 
 router.get("/", async (req, res) => {
     try {
@@ -28,8 +29,8 @@ router.post("/new-message", async (req, res) => {
     const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
 
     const newMessage = {
-        name: sanitize.value(name, String),
-        message: sanitize.value(message, String),
+        name: sanitizeHtml(name),
+        message: sanitizeHtml(message),
         createdAt: formattedDate
     };
 
