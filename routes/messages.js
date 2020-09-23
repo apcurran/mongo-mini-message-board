@@ -4,6 +4,7 @@ const express = require("express");
 const router = express.Router();
 const { Connection } = require("../db/db-init");
 const sanitizeHtml = require("sanitize-html");
+const formatDate = require("../utility/format-date");
 
 router.get("/", async (req, res) => {
     try {
@@ -22,15 +23,10 @@ router.get("/new-message", (req, res) => {
 
 router.post("/new-message", async (req, res) => {
     const { name, message } = req.body;
-
-    const date = new Date();
-    const options = { weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric" };
-    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
-
     const newMessage = {
         name: sanitizeHtml(name),
         message: sanitizeHtml(message),
-        createdAt: formattedDate
+        createdAt: formatDate(new Date())
     };
 
     try {
