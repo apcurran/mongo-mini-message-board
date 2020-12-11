@@ -8,7 +8,7 @@ const formatDate = require("../utility/format-date");
 
 router.get("/", async (req, res) => {
     try {
-        const messages = await Connection.db.collection("messages").find().toArray();
+        const messages = await Connection.db.collection("messages").find({ topic: "general" }).toArray();
         
         res.render("index", { title: "General Messages", messages: messages, topic: "general" });
 
