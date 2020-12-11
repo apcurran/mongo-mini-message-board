@@ -80,8 +80,15 @@
   }
   
   .add-message-btn {
-    margin-bottom: 1rem;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: .5rem;
+  }
+
+  .add-message-btn__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: .25rem;
   }
   
   /* Index styles */
