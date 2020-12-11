@@ -15,16 +15,18 @@
         <a href="/topics/sports" class="topics__item__link">Sports</a>
       </li>
     </ul>
-    <a href="/new-message?topic=<%= topic %>" class="add-message-btn">Create Post</a>
-    <section class="messages">
-      <ul class="messages__list">
-        <% for (let message of messages) { %>
-          <li class="messages__list__item">
-            <h3 class="messages__list__item__author"><%= message.name %></h3>  
-            <p class="messages__list__item__para"><%= message.message %></p>
-            <p class="messages__list__item__date"><%= message.createdAt %></p>
-          </li>
-        <% } %>
-      </ul>
-    </section>
+    <div class="messages-wrapper">
+      <a href="/new-message?topic=<%= topic %>" class="btn add-message-btn">Create Post</a>
+      <section class="messages">
+        <ul class="messages__list">
+          <% for (let message of messages) { %>
+            <li class="messages__list__item">
+              <h3 class="messages__list__item__author"><%= message.name %></h3>  
+              <p class="messages__list__item__para"><%= message.message %></p>
+              <p class="messages__list__item__date"><%= message.createdAt %></p>
+            </li>
+          <% } %>
+        </ul>
+      </section>
+    </div>
   </div>

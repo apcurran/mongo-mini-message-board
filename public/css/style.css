@@ -4,18 +4,29 @@
     box-sizing: border-box;
   }
   
+  :root {
+    --dark-blue: #0c4a6e;
+  }
+
   body,
   button,
   input {
     font-family: 'Montserrat', sans-serif;
   }
   
-  body {
-    background-color: #fefefe;
-  }
-  
   a {
-    color: #222;
+    color: #1E293B;
+  }
+
+  .btn {
+    padding: .8125rem 1.25rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: .0625em;
+    font-weight: 700;
+    text-decoration: none;
+    background-color: #6366f1;
+    color: #fff;
   }
   
   /* Both views */
@@ -24,8 +35,8 @@
     display: flex;
     justify-content: flex-end;
     background-color: #fff;
-    border-bottom: 3px solid #90cdf4;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+    border-bottom: 3px solid #7dd3fc;
+    box-shadow: 0 2px 4px hsla(199, 95%, 74%, .25);
   }
   
   .nav__link:first-of-type {
@@ -39,31 +50,47 @@
     align-items: center;
     padding-bottom: 3rem;
   }
+
+  .messages-wrapper {
+    max-width: 48rem;
+    width: 90%;
+  }
   
   .title {
-    font-weight: 400;
     margin: 3rem 0 2.25rem 0;
+    font-weight: 400;
+    color: #0284C7;
   }
 
   .topics-title {
     margin-bottom: .5rem;
+    color: #475569;
   }
 
   .topics-list {
     display: flex;
-    gap: 1rem;
+    gap: .875rem;
     margin-bottom: 2rem;
     list-style: none;
   }
+
+  .topics__item__link {
+    display: inline-block;
+    padding: .5rem;
+  }
+  
+  .add-message-btn {
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
   
   /* Index styles */
+
   .messages {
-    width: 50rem;
-    max-width: 90%;
     padding: 2rem 3.5rem;
-    background-color: hsl(210, 38%, 96%);
+    background-color: #f1f5f9;
     border-radius: 10px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, .15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
   }
   
   .messages__list {
@@ -86,7 +113,7 @@
   
   .messages__list__item__date {
     font-size: .825rem;
-    color: #888;
+    color: hsl(215, 19%, 43%);
   }
   
   /* Form Styles */
@@ -120,14 +147,10 @@
   
   .form__submit {
     align-self: flex-start;
-    padding: .75rem 2.35rem;
-    font-size: 1.1rem;
   
-    border-radius: 4px;
     border: none;
     cursor: pointer;
-    background-color: #7F9CF5;
-    color: #fff;
+    font-size: 1rem;
   }
   
   @media screen and (max-width: 34.5em) {
