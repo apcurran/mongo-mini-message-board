@@ -17,6 +17,17 @@ router.get("/", async (req, res) => {
     }
 });
 
+// Topic routes
+router.get("/gaming", async (req, res) => {
+    try {
+        res.send("gaming route");
+
+    } catch (err) {
+        console.error(err);
+    }
+});
+
+
 router.get("/new-message", (req, res) => {
     res.render("new-message", { title: "New Message" });
 });
