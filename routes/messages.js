@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
     try {
         const messages = await Connection.db.collection("messages").find().toArray();
         
-        res.render("index", { title: "Mongo Message", messages: messages, topic: "general" });
+        res.render("index", { title: "General Messages", messages: messages, topic: "general" });
 
     } catch (err) {
         console.error(err);
@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
 // Topic routes
 router.get("/topics/gaming", async (req, res) => {
     try {
-        const messages = await Connection.db.collection("messages").find().toArray();
+        const messages = await Connection.db.collection("messages").find({ topic: "gaming" }).toArray();
 
         res.render("index", { title: "Gaming", messages: messages, topic: "gaming" });
 
@@ -29,19 +29,40 @@ router.get("/topics/gaming", async (req, res) => {
     }
 });
 
-router.get("/new-message", (req, res) => {
-    console.log(req.query);
+router.get("/topics/movies", async (req, res) => {
+    try {
+        const messages = await Connection.db.collection("messages").find({ topic: "movies" }).toArray();
 
-    res.render("new-message", { title: "New Message" });
+        res.render("index", { title: "Movies", messages: messages, topic: "movies" });
+
+    } catch (err) {
+        console.error(err);
+    }
+});
+
+router.get("/topics/sports", async (req, res) => {
+    try {
+        const messages = await Connection.db.collection("messages").find({ topic: "sports" }).toArray();
+
+        res.render("index", { title: "Sports", messages: messages, topic: "sports" });
+
+    } catch (err) {
+        console.error(err);
+    }
+});
+
+router.get("/new-message", (req, res) => {
+    const { topic } = req.query;
+
+    res.render("new-message", { title: "New Message", topic: topic });
 });
 
 router.post("/new-message", async (req, res) => {
-    console.log(req.body);
-
-    const { name, message } = req.body;
+    const { name, message, topic } = req.body;
     const newMessage = {
         name: sanitizeHtml(name),
         message: sanitizeHtml(message),
+        topic: topic,
         createdAt: formatDate(new Date())
     };
 
