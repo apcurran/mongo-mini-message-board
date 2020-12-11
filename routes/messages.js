@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
     try {
         const messages = await Connection.db.collection("messages").find().toArray();
         
-        res.render("index", { title: "Mongo Message", messages: messages });
+        res.render("index", { title: "Mongo Message", messages: messages, topic: "general" });
 
     } catch (err) {
         console.error(err);
@@ -18,21 +18,26 @@ router.get("/", async (req, res) => {
 });
 
 // Topic routes
-router.get("/gaming", async (req, res) => {
+router.get("/topics/gaming", async (req, res) => {
     try {
-        res.send("gaming route");
+        const messages = await Connection.db.collection("messages").find().toArray();
+
+        res.render("index", { title: "Gaming", messages: messages, topic: "gaming" });
 
     } catch (err) {
         console.error(err);
     }
 });
 
-
 router.get("/new-message", (req, res) => {
+    console.log(req.query);
+
     res.render("new-message", { title: "New Message" });
 });
 
 router.post("/new-message", async (req, res) => {
+    console.log(req.body);
+
     const { name, message } = req.body;
     const newMessage = {
         name: sanitizeHtml(name),

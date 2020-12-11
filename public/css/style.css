@@ -44,6 +44,17 @@
     font-weight: 400;
     margin: 3rem 0 2.25rem 0;
   }
+
+  .topics-title {
+    margin-bottom: .5rem;
+  }
+
+  .topics-list {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    list-style: none;
+  }
   
   /* Index styles */
   .messages {

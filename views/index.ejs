@@ -1,11 +1,18 @@
 <div class="wrapper">
     <h1 class="title"><%= title %></h1>
-    <h2 class="topics-header">Topics</h2>
+    <h2 class="topics-title">Topics</h2>
     <ul class="topics-list">
-      <li class="topics__item">Gaming</li>
-      <li class="topics__item">Movies</li>
-      <li class="topics__item">Sports</li>
+      <li class="topics__item">
+        <a href="/topics/gaming" class="topics__item__link">Gaming</a>
+      </li>
+      <li class="topics__item">
+        <a href="/topics/movies" class="topics__item__link">Movies</a>
+      </li>
+      <li class="topics__item">
+        <a href="/topics/sports" class="topics__item__link">Sports</a>
+      </li>
     </ul>
+    <a href="/new-message?topic=<%= topic %>" class="add-message-btn">Create Post</a>
     <section class="messages">
       <ul class="messages__list">
         <% for (let message of messages) { %>
