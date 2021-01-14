@@ -58,11 +58,12 @@ router.get("/new-message", (req, res) => {
 });
 
 router.post("/new-message", async (req, res) => {
-    const { name, message, topic } = req.body;
+    const { name, message } = req.body;
+    const { topic } = req.query;
     const newMessage = {
         name: sanitizeHtml(name),
         message: sanitizeHtml(message),
-        topic: topic,
+        topic: sanitizeHtml(topic),
         createdAt: formatDate(new Date())
     };
 

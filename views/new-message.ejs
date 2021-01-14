@@ -1,6 +1,6 @@
 <div class="wrapper">
     <h1 class="title">Add a Message</h1>
-    <form method="POST" action="/new-message" class="form">
+    <form method="POST" action="/new-message?topic=<%= topic %>" class="form">
         <div class="form__field">
             <label class="form__label" for="name">Name: </label>
             <input type="text" class="form__input" id="name" name="name" required>
@@ -8,9 +8,6 @@
         <div class="form__field">
             <label class="form__label" for="message">Message: </label>
             <input type="text" class="form__input" id="message" name="message" required>
-        </div>
-        <div class="form__field">
-            <input type="hidden" class="form__input" id="topic" name="topic" value="<%= topic %>">
         </div>
         <div class="form__field">
             <input type="submit" class="btn form__submit" value="Add">
