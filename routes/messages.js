@@ -2,8 +2,9 @@
 
 const express = require("express");
 const router = express.Router();
+const sanitize = require("mongo-sanitize");
+
 const { Connection } = require("../db/db-init");
-const sanitizeHtml = require("sanitize-html");
 const formatDate = require("../utility/format-date");
 
 router.get("/", async (req, res) => {
@@ -61,9 +62,9 @@ router.post("/new-message", async (req, res) => {
     const { name, message } = req.body;
     const { topic } = req.query;
     const newMessage = {
-        name: sanitizeHtml(name),
-        message: sanitizeHtml(message),
-        topic: sanitizeHtml(topic),
+        name: sanitize(name),
+        message: sanitize(message),
+        topic: sanitize(topic),
         createdAt: formatDate(new Date())
     };
 
