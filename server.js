@@ -25,8 +25,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", messagesRouter);
 
 // Init db
-Connection
-    .connectToMongo()
-    .catch(err => console.error(err));
+Connection.connectToMongo();
 
 app.listen(PORT, () => console.log(`Listening on port, ${PORT}.`));
