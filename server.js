@@ -10,13 +10,17 @@ const { Connection } = require("./db/db-init");
 const expressLayouts = require("express-ejs-layouts");
 const compression = require("compression");
 const helmet = require("helmet");
+const eta = require("eta");
 // Import routes
 const messagesRouter = require("./routes/messages");
 
 // Middleware
-app.set("view engine", "ejs");
-app.set("layout", "layouts/layout");
-app.use(expressLayouts);
+// app.set("view engine", "ejs");
+// app.set("layout", "layouts/layout");
+// app.use(expressLayouts);
+app.engine("eta", eta.renderFile);
+app.set("view engine", "eta");
+app.set("views", "./views");
 app.use(compression());
 app.use(helmet());
 app.use(express.static("public"));

@@ -1,5 +1,7 @@
+<% layout('./layouts/layout') %>
+
 <div class="wrapper">
-    <h1 class="title"><%= title %></h1>
+    <h1 class="title"><%= it.title %></h1>
     <h2 class="topics-title">Topics</h2>
     <ul class="topics-list">
       <li class="topics__item">
@@ -17,19 +19,19 @@
     </ul>
     <div class="messages-wrapper">
       <section class="messages">
-        <a href="/new-message?topic=<%= topic %>" class="btn add-message-btn">
+        <a href="/new-message?topic=<%= it.topic %>" class="btn add-message-btn">
           <svg class="add-message-btn__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
           <span>Create Post</span>
         </a>
         <ul class="messages__list">
-          <% for (let message of messages) { %>
-            <li class="messages__list__item">
-              <h3 class="messages__list__item__author"><%= message.name %></h3>  
-              <p class="messages__list__item__para"><%= message.message %></p>
-              <p class="messages__list__item__date"><%= message.createdAt %></p>
-            </li>
-          <% } %>
+            <% it.messages.forEach(message => { %>
+                <li class="messages__list__item">
+                <h3 class="messages__list__item__author"><%= message.name %></h3>  
+                <p class="messages__list__item__para"><%= message.message %></p>
+                <p class="messages__list__item__date"><%= message.createdAt %></p>
+                </li>
+            <% }) %>
         </ul>
       </section>
     </div>
-  </div> 
+  </div>
