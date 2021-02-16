@@ -6,7 +6,10 @@ class Connection {
     static async connectToMongo() {
         if (this.db) return this.db;
 
-        const client = await MongoClient.connect(process.env.DB_URI, { useUnifiedTopology: true });
+        const client = await MongoClient
+                                .connect(process.env.DB_URI, { useUnifiedTopology: true })
+                                .catch(err => console.error(err));
+                                
         this.db = client.db("message_board");
 
         return this.db;
