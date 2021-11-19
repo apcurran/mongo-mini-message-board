@@ -14,12 +14,12 @@
   "author": "Alex Curran",
   "license": "ISC",
   "dependencies": {
-    "compression": "^1.7.4",
     "dotenv": "^8.2.0",
     "eta": "^1.12.1",
     "express": "^4.17.1",
     "helmet": "^4.2.0",
     "mongo-sanitize": "^1.1.0",
-    "mongodb": "^3.6.3"
+    "mongodb": "^3.6.3",
+    "shrink-ray-current": "^4.1.3"
   }
 }
