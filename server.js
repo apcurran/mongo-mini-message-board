@@ -22,6 +22,13 @@ app.use(helmet());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 
+// // Custom Global Middleware
+// app.use((req, res, next) => {
+//     const dateFormatter =  new Intl.DateTimeFormat("en-US", { dateStyle: "long", timeStyle: "Long" });
+
+
+// });
+
 app.use("/", messagesRouter);
 
 // Init db
