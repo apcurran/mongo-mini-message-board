@@ -5,7 +5,7 @@ const router = express.Router();
 const sanitize = require("mongo-sanitize");
 
 const { Connection } = require("../db/db-init");
-const formatDate = require("../utility/format-date");
+const { formatDate } = require("../utility/format-date");
 
 router.get("/", async (req, res) => {
     try {
