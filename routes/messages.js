@@ -2,7 +2,6 @@
 
 const express = require("express");
 const router = express.Router();
-const sanitize = require("mongo-sanitize");
 
 const { Connection } = require("../db/db-init");
 const { reviseMessagesArrDates } = require("../utility/revise-messages-arr-dates");
@@ -63,12 +62,15 @@ router.get("/new-message", (req, res) => {
 });
 
 router.post("/new-message", async (req, res) => {
-    const { name, message } = req.body;
     const { topic } = req.query;
+    const { name, message } = req.body;
+
+    if (typeof topic !== "string" || typeof name !== "string" || typeof message !== "string") throw new Error("Invalid data");
+
     const newMessage = {
-        name: sanitize(name),
-        message: sanitize(message),
-        topic: sanitize(topic),
+        name: name,
+        message: message,
+        topic: topic,
         createdAt: new Date()
     };
 
